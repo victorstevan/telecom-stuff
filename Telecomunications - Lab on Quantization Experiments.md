@@ -1,6 +1,6 @@
 #
 ### A. Uniform Quantization
-**A.1 ** Display the input-to-output mapping characteristic of a 2-bit uniform quantizer:
+**A.1** Display the input-to-output mapping characteristic of a 2-bit uniform quantizer:
 ```matlab
 quant_ch(2, 'uniform')
 % Adjust axis to match figure
@@ -165,7 +165,7 @@ waveplot(a*x), hold on, waveplot(quantize(a*x,3));
 
 print('figure b2.png', '-dpng', '-S1280,720');
 ```
->![](./figure%20b2%202.png])
+>![](./figure%20b2%202.png)
 
 **B.3**  Use samples from the sinusoid x to observe quantization error $x - x_q$:
 ```matlab
@@ -195,7 +195,7 @@ mx_mod= 0.2500
 x = sin( 2*pi*512*[1:2048]/SAMPLING_FREQ);
 psd(x)
 ```
-![[figure b4.png]]
+![](./figure%20b4.png)
 For N = 2; 3; 4; 5; and 6 display the PSD function of the quantized waveform xq and evaluate the corresponding quantization error power in dB. Enter results into Table 5.4.
 ```matlab
 xq = quantize(x, 2);
@@ -227,7 +227,7 @@ s = speech(100)
 subplot(211), waveplot(s)
 
 ```
-![[figure c1.png]]
+![](./figure%20c1.png)
 
 Observe that the signal amplitude is restricted to [ 1; 1 ] and there
 are samples in s with amplitude 1. Thus, s spans the entire input
@@ -245,7 +245,7 @@ x = normalize(s, 0.01);
 xq = quantize(x,6);
 subplot(211),waveplot(x),subplot(212),waveplot(xq);
 ```
-![[figure c2.2.png]]
+![](./figure%20c2.2.png)
 > A diferença de xq para s ou sq é a quantização, s e sq são dados em forma continua, xq é sua representação binária
 
 **C.3** **Non-uniform quantization**: Display the quantizer characteristic of a $\mu$-law companding 3-bit quantizer:	
@@ -253,7 +253,7 @@ subplot(211),waveplot(x),subplot(212),waveplot(xq);
 clf;
 quant_ch(3, 'mu_law')
 ```
-![[figure c3.png]]
+![](./figure%20c3.png)
 
 **C.4** Apply $\mu$-law companding to sampled signals s and x and then quantize:
 ```matlab
@@ -267,7 +267,8 @@ clf, subplot(311), waveplot(s)
 subplot(312), waveplot(sq)
 subplot(313), waveplot(msq)
 ```
-![[figure c4.1 2.png]]
+
+![](./figure%20c4.1%201.png)
 
 Now for the small amplitude signal x:
 ```matlab
@@ -275,8 +276,8 @@ figure(2), subplot(311), waveplot(x)
 subplot(312), waveplot(xq)
 subplot(313), waveplot(mxq)
 ```
-![[figure c4.2.png]]
- 
+ ![](./figure%20c4.1%202.png)
+
  **C.5** For a given number of quantization levels, a uniform quantizer is optimum if input sample amplitudes are uniformly distributed over the
 input range [ 1; 1 ]. However, speech signal amplitude distribution is
 best modelled by a Laplace distribution. Generate the sample pdf of
@@ -286,13 +287,14 @@ close(2), figure(1), clf;
 a = laplace( 2000, 0.01 );
 pdf( a, 30 );
 ```
-![[figure c5.png]]
+![](./figure%20c5.png)
+
 Compand the sequence a by a -law compander and display the sample pdf of the resulting sequence
 ```matlab
 b = mu_law(a);
 hold on, pdf( b, 30);
 ```
-![[figure c5.1.png]]
+![](./figure%20c5.1.png)
 The pdf of the companded sequence b resembles a uniform pdf, which results in better utilization of available quantization levels
 
 **C.6** In practise, any quantizer has to operate on signals at varying amplitude levels. Therefore, to assess the quantizer performance, it must be tested with signals at diferent power levels. One measure of quantizer performance is the signal to quantization noise ratio SQNR. Consider a 8-bit quantizer used in a typical voice grade A/D converter:
@@ -304,7 +306,7 @@ The pdf of the companded sequence b resembles a uniform pdf, which results in be
 
 This algorithm is available in MATLAB function exp5 c6
 ```matlab
- power = [ 0.0001 0.001 0.01 0.1 1 ];
+power = [ 0.0001 0.001 0.01 0.1 1 ];
 exp5_c6( power );
 ```
 where all quantities are measured in dB. Enter results into Table 5.5. Also plot SQNR vs. $\sigma_s^2$ or both quantizer types in Graph 5.2.
@@ -317,4 +319,4 @@ where all quantities are measured in dB. Enter results into Table 5.5. Also plot
 |-10.6034  | 42.1210 |  37.5378|
 |  -3.8564 |  47.2666  | 34.7939
 
-![[figure c.6.png]]
+![](./figure%20c.6.png)
